@@ -57,6 +57,25 @@ class GameView: UIView {
         return image
     }()
     
+    private lazy var image2: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "beach-ball")
+        return image
+    }()
+    
+    private lazy var image3: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "beach-ball")
+        return image
+    }()
+    
+    private lazy var image4: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "beach-ball")
+        return image
+    }()
+    
+    
     // create custom view
     // only called if uses main story board
     override init(frame: CGRect) {
@@ -73,12 +92,14 @@ class GameView: UIView {
     
     private func commonInit() {
         constrainStackView()
-        // constrainImage1()
+        constrainImage1()
+        constrainImage2()
+        constrainImage3()
+        constrainImage4()
     }
     
     private func constrainStackView() {
         addSubview(buttonStack)
-        // buttonStack = UIStackView(arrangedSubviews: [linear, easeIn, easeOut, easeInOut])
         buttonStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -96,13 +117,45 @@ class GameView: UIView {
         image1.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image1.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            image1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            image1.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.3),
+            image1.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            image1.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
             image1.heightAnchor.constraint(equalTo:image1.widthAnchor)
         ])
-        
     }
     
+    private func constrainImage2() {
+        addSubview(image2)
+        image2.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            image2.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image2.leadingAnchor.constraint(equalTo: image1.trailingAnchor, constant: 60),
+            image2.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
+            image2.heightAnchor.constraint(equalTo:image2.widthAnchor)
+        ])
+    }
+    private func constrainImage3() {
+        addSubview(image3)
+        image3.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            image3.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image3.leadingAnchor.constraint(equalTo: image2.trailingAnchor, constant: 60),
+            image3.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
+            image3.heightAnchor.constraint(equalTo:image3.widthAnchor)
+        ])
+    }
     
+    private func constrainImage4() {
+        addSubview(image4)
+        image4.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            image4.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image4.leadingAnchor.constraint(equalTo: image3.trailingAnchor, constant: 60),
+            image4.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
+            image4.heightAnchor.constraint(equalTo:image4.widthAnchor)
+        ])
+    }
 }
