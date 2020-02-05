@@ -9,12 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+   private let gameView = GameView()
+    
+    override func loadView() {
+        view = gameView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .magenta
+
         // Do any additional setup after loading the view.
     }
+    
 
 
 }
-
