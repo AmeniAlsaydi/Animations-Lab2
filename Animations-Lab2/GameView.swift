@@ -10,6 +10,18 @@ import UIKit
 
 class GameView: UIView {
     
+    private lazy var animateButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Animate", for: .normal)
+        return button
+    }()
+    
+    private lazy var resetButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Reset", for: .normal)
+        return button
+    }()
+    
     private lazy var linear: UIButton = {
         let button = UIButton()
         button.setTitle("Linear", for: .normal)
@@ -42,7 +54,16 @@ class GameView: UIView {
         return button
     }()
     
-    private lazy var buttonStack: UIStackView = {
+    private lazy var bottomButtonStack: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [resetButton, animateButton])
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.axis = .horizontal
+        stackView.spacing = 10
+        return stackView
+    }()
+    
+    private lazy var optionsButtonStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [linear, easeIn, easeOut, easeInOut])
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -91,33 +112,46 @@ class GameView: UIView {
     }
     
     private func commonInit() {
-        constrainStackView()
+        constrainStackView1()
+        constrainStackView2()
         constrainImage1()
         constrainImage2()
         constrainImage3()
         constrainImage4()
     }
     
-    private func constrainStackView() {
-        addSubview(buttonStack)
-        buttonStack.translatesAutoresizingMaskIntoConstraints = false
+    private func constrainStackView1() {
+        addSubview(optionsButtonStack)
+        optionsButtonStack.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-        buttonStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-        buttonStack.leadingAnchor.constraint(equalTo: leadingAnchor),
-        buttonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-        buttonStack.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1)
+        optionsButtonStack.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+        optionsButtonStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+        optionsButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+        optionsButtonStack.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.1)
         ])
         
     }
     
+    private func constrainStackView2() {
+        addSubview(bottomButtonStack)
+        bottomButtonStack.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+        bottomButtonStack.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 20),
+        bottomButtonStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+        bottomButtonStack.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+        bottomButtonStack.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
+        ])
+        
+    }
     
     private func constrainImage1() {
         addSubview(image1)
         image1.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image1.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image1.topAnchor.constraint(equalTo: optionsButtonStack.bottomAnchor, constant: 20),
             image1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
             image1.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
             image1.heightAnchor.constraint(equalTo:image1.widthAnchor)
@@ -129,7 +163,7 @@ class GameView: UIView {
         image2.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image2.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image2.topAnchor.constraint(equalTo: optionsButtonStack.bottomAnchor, constant: 20),
             image2.leadingAnchor.constraint(equalTo: image1.trailingAnchor, constant: 60),
             image2.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
             image2.heightAnchor.constraint(equalTo:image2.widthAnchor)
@@ -140,7 +174,7 @@ class GameView: UIView {
         image3.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image3.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image3.topAnchor.constraint(equalTo: optionsButtonStack.bottomAnchor, constant: 20),
             image3.leadingAnchor.constraint(equalTo: image2.trailingAnchor, constant: 60),
             image3.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
             image3.heightAnchor.constraint(equalTo:image3.widthAnchor)
@@ -152,7 +186,7 @@ class GameView: UIView {
         image4.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            image4.topAnchor.constraint(equalTo: buttonStack.bottomAnchor, constant: 20),
+            image4.topAnchor.constraint(equalTo: optionsButtonStack.bottomAnchor, constant: 20),
             image4.leadingAnchor.constraint(equalTo: image3.trailingAnchor, constant: 60),
             image4.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.1),
             image4.heightAnchor.constraint(equalTo:image4.widthAnchor)
