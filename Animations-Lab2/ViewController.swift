@@ -10,19 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
-   private let gameView = GameView()
+    private let gameView = GameView()
     private var ball1YConstarints: NSLayoutConstraint? // all the balls have the same top constraint
     
     override func loadView() {
         view = gameView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         addTargets()
-
+        
     }
     
     private func addTargets() {
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func hideBall(_ sender: UIButton) {
-    
+        
         var ballView = gameView.image1
         
         switch sender.tag {
@@ -59,15 +59,33 @@ class ViewController: UIViewController {
     }
     
     @objc private func animate(_ sender: UIButton) {
-
-                ball1YConstarints = gameView.image1.constraints[0]
         
-                UIView.animate(withDuration: 4.0, delay: 0.0, options: .curveLinear, animations: {
-                    //self.ball1YConstarints?.constant += 100
-                    self.gameView.image1.transform = CGAffineTransform(translationX: 0.0, y: 400.0)
-                    self.view.layoutIfNeeded()
-                }, completion: nil)
+        ball1YConstarints = gameView.image1.constraints[0]
+        
+        UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveLinear, animations: {
+            //self.ball1YConstarints?.constant += 100
+            self.gameView.image1.transform = CGAffineTransform(translationX: 0.0, y: 550.0)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseIn, animations: {
+            //self.ball1YConstarints?.constant += 100
+            self.gameView.image2.transform = CGAffineTransform(translationX: 0.0, y: 550.0)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseOut, animations: {
+            //self.ball1YConstarints?.constant += 100
+            self.gameView.image3.transform = CGAffineTransform(translationX: 0.0, y: 550.0)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 3.0, delay: 0.0, options: .curveEaseInOut, animations: {
+            //self.ball1YConstarints?.constant += 100
+            self.gameView.image4.transform = CGAffineTransform(translationX: 0.0, y: 550.0)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
         
     }
-
+    
 }
