@@ -24,6 +24,7 @@ class GameView: UIView {
     
     public lazy var linear: UIButton = {
         let button = UIButton()
+        button.tag = 0
         button.setTitle("Linear", for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
@@ -32,6 +33,7 @@ class GameView: UIView {
 
     public lazy var easeIn: UIButton = {
         let button = UIButton()
+        button.tag = 1
         button.setTitle("EaseIn", for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
@@ -40,6 +42,7 @@ class GameView: UIView {
     
     public lazy var easeOut: UIButton = {
         let button = UIButton()
+        button.tag = 2
         button.setTitle("EaseOut", for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)
@@ -48,6 +51,7 @@ class GameView: UIView {
     
     public lazy var easeInOut: UIButton = {
         let button = UIButton()
+        button.tag = 3
         button.setTitle("EaseInEaseOut", for: .normal)
         button.titleLabel?.numberOfLines = 0
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 13)

@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     
    private let gameView = GameView()
-    private var ball1YConstarints: NSLayoutConstraint? // all the balls have the same top constraint 
+    private var ball1YConstarints: NSLayoutConstraint? // all the balls have the same top constraint
     
     override func loadView() {
         view = gameView
@@ -25,24 +25,49 @@ class ViewController: UIViewController {
 
     }
     
-    
     private func addTargets() {
-        gameView.linear.addTarget(self, action: #selector(moveBall(_:)), for: .touchUpInside)
+        gameView.linear.addTarget(self, action: #selector(hideBall(_:)), for: .touchUpInside)
+        gameView.easeIn.addTarget(self, action: #selector(hideBall(_:)), for: .touchUpInside)
+        gameView.easeOut.addTarget(self, action: #selector(hideBall(_:)), for: .touchUpInside)
+        gameView.easeInOut.addTarget(self, action: #selector(hideBall(_:)), for: .touchUpInside)
+        gameView.animateButton.addTarget(self, action: #selector(animate(_:)), for: .touchUpInside)
     }
     
-    @objc private func moveBall(_ sender: UIButton) {
-        print("linear")
+    @objc private func hideBall(_ sender: UIButton) {
+    
+        var ballView = gameView.image1
         
-        // switch on tag- and set a varibale to type -> animationOption then pass into options below
+        switch sender.tag {
+        case 0:
+            ballView = gameView.image1
+        case 1:
+            ballView = gameView.image2
+        case 2:
+            ballView =  gameView.image3
+        case 3:
+            ballView =  gameView.image4
+        default:
+            print("default")
+        }
         
-        ball1YConstarints = gameView.image1.constraints[0]
+        if ballView.isHidden {
+            ballView.isHidden = false
+        } else {
+            ballView.isHidden = true
+        }
         
-        UIView.animate(withDuration: 4.0, delay: 0.0, options: .curveLinear, animations: {
-            //self.ball1YConstarints?.constant += 100
-            self.gameView.image1.transform = CGAffineTransform(translationX: 0.0, y: 400.0)
-            self.view.layoutIfNeeded()
-        }, completion: nil)
     }
+    
+    @objc private func animate(_ sender: UIButton) {
 
+                ball1YConstarints = gameView.image1.constraints[0]
+        
+                UIView.animate(withDuration: 4.0, delay: 0.0, options: .curveLinear, animations: {
+                    //self.ball1YConstarints?.constant += 100
+                    self.gameView.image1.transform = CGAffineTransform(translationX: 0.0, y: 400.0)
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
+        
+    }
 
 }
