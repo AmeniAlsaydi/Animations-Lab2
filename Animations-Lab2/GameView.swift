@@ -10,19 +10,19 @@ import UIKit
 
 class GameView: UIView {
     
-    private lazy var animateButton: UIButton = {
+    public lazy var animateButton: UIButton = {
         let button = UIButton()
         button.setTitle("Animate", for: .normal)
         return button
     }()
     
-    private lazy var resetButton: UIButton = {
+    public lazy var resetButton: UIButton = {
         let button = UIButton()
         button.setTitle("Reset", for: .normal)
         return button
     }()
     
-    private lazy var linear: UIButton = {
+    public lazy var linear: UIButton = {
         let button = UIButton()
         button.setTitle("Linear", for: .normal)
         button.titleLabel?.numberOfLines = 0
@@ -30,7 +30,7 @@ class GameView: UIView {
         return button
     }()
 
-    private lazy var easeIn: UIButton = {
+    public lazy var easeIn: UIButton = {
         let button = UIButton()
         button.setTitle("EaseIn", for: .normal)
         button.titleLabel?.numberOfLines = 0
@@ -38,7 +38,7 @@ class GameView: UIView {
         return button
     }()
     
-    private lazy var easeOut: UIButton = {
+    public lazy var easeOut: UIButton = {
         let button = UIButton()
         button.setTitle("EaseOut", for: .normal)
         button.titleLabel?.numberOfLines = 0
@@ -46,7 +46,7 @@ class GameView: UIView {
         return button
     }()
     
-    private lazy var easeInOut: UIButton = {
+    public lazy var easeInOut: UIButton = {
         let button = UIButton()
         button.setTitle("EaseInEaseOut", for: .normal)
         button.titleLabel?.numberOfLines = 0
@@ -63,7 +63,7 @@ class GameView: UIView {
         return stackView
     }()
     
-    private lazy var optionsButtonStack: UIStackView = {
+    public lazy var optionsButtonStack: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [linear, easeIn, easeOut, easeInOut])
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
@@ -72,25 +72,25 @@ class GameView: UIView {
         return stackView
     }()
     
-    private lazy var image1: UIImageView = {
+    public lazy var image1: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "beach-ball")
         return image
     }()
     
-    private lazy var image2: UIImageView = {
+    public lazy var image2: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "beach-ball")
         return image
     }()
     
-    private lazy var image3: UIImageView = {
+    public lazy var image3: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "beach-ball")
         return image
     }()
     
-    private lazy var image4: UIImageView = {
+    public lazy var image4: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "beach-ball")
         return image
